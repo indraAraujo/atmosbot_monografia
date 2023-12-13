@@ -1,0 +1,174 @@
+\section{Introdução}
+Este apêndice tem o intuito de explicar e expor os casos de teste definidos para realizar a validação final do modelo proposto para um robô autônomo móvel perante os requisitos previamente definidos para o sistema completo (robô e ambiente simulados).
+
+\section{Casos de teste}
+Os casos de teste são procedimentos para realizar testes nos quais são dispostos as ações necessárias para realizar cada teste e o resultado ideal perante estas ações.
+Para melhor organização e padronização, os casos de teste aqui definidos seguem o modelo disposto na Tabela  \ref{tab:modeloCasos}.
+
+\begin{table}[H]
+\centering
+\caption{Modelo dos casos de teste}
+\label{tab:modeloCasos}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Título do requisito ao que o caso de teste se refere. &
+  Detalhamento da ação, ou entrada, necessária para validar o requisito. &
+  Detalhamento do Resultado esperado da simulação perante a ação, ou entrada, definida. \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+A seguir são dispostos os casos de teste elaborados conforme os requisitos (funcionais e não funcionais) definidos previamente para a simulação do ambiente e do robô, expostos no \appendixautorefname~\ref{appendix-requisitos}.
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT01 referente a RFS01 }
+\label{tab:caso01}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Movimentação do robô &
+  Em primeiro lugar, a simulação deve ser executada e o estado de vagar pelo ambiente deve ser inciado. Com tudo executando devidamente, devem ser adicionados obstáculos há 0,5 metros da dianteira e lateral esquerda do robô. Após 5 segundos, devem ser adicionados obstáculos há 0,5 metros da dianteira e lateral direita do robô. &
+  Ao adicionar os primeiros obstáculos, o robô deverá se rotacionar no sentido direito. Após adicionar os últimos obstáculos, o robô deverá se rotacionar no sentido esquerdo.
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT02 referente a RFS02 }
+\label{tab:caso02}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Evitação de obstáculos &
+  Em primeiro lugar, a simulação deve ser executada e o estado de exploração do ambiente deve ser inciado. A exploração deve ocorrer por 120 segundos. &
+  Com o ambiente propriamente elaborado, o robô deverá se locomover por ele e se esquivar de possíveis móveis que estão presentes no meio.
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT03 referente a RNFS01 }
+\label{tab:caso04}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Locomoção em diferentes superfícies  &
+  Em primeiro lugar, a simulação deve ser executada e o estado de vagar pelo ambiente deve ser inciado em um meio constituído parcialmente por piso liso e por tapete. &
+  O robô deverá se movimentar igualmente em ambos as superfícies, sem que o robô apresente o comportamente de instabilidade nas rodas ou emperramento.
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT04 referente a RNFS02 }
+\label{tab:caso05}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Locomoção com segurança aos seres transeuntes  &
+  Em primeiro lugar, a simulação deve ser executada e o estado de exploração do ambiente deve ser inciado em um meio constituído por no mínimo um ser humano se locomovendo. &
+  O robô deverá se locomover pelo ambiente em uma velocidade até 0,2 m/s.
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT05 referente a RNFA01 }
+\label{tab:caso07}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Dinamicidade  &
+  Em primeiro lugar, a simulação deve ser executada e a posição dos objetos e móveis devem ser alteradas com constância.   &
+  Os objetos e móveis deverão ter sua posição alterada sem que a simulação pare ou corrompa. 
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT06 referente a RNFA03 }
+\label{tab:caso09}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Semelhança a domicílios reais  &
+  A simulação deve ser executada.   &
+  A simulação deverá apresentar uma planta residencial básica com elementos de sala, dormitório e cozinha.
+  \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT07 referente a RNFA04 }
+\label{tab:caso10}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Tamanho de domicílio padrão  &
+  A simulação deve ser executada.   &
+  O ambiente simulado deverá apresentar no mínimo um espaço de cozinha, sala e dormitório. Entre os espaços, não devem se apresentar portas de acesso fechadas.
+  \\ \hline
+\end{tabular}
+%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Caso de teste CT08 referente a RNFA05 }
+\label{tab:caso11}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3cm}|p{5cm}|p{5cm}}
+\multicolumn{1}{p{3cm}|}{\textbf{Requisito referente}} &
+  \multicolumn{1}{p{5cm}|}{\textbf{Ação/Entrada}} &
+  \multicolumn{1}{p{5cm}}{\textbf{Resultado esperado}} \\ \hline
+Minimização de Impedimentos  &
+  A simulação deve ser executada.   &
+  O ambiente simulado não deverá apresentar portas de acesso, entre os espaços, que se apresentam fechadas.
+  \\ \hline
+\end{tabular}
+%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}

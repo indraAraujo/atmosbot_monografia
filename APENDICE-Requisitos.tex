@@ -1,0 +1,186 @@
+\section{Introdução}
+Esta seção apresentará o propósito do documento de Especificação de Requisitos do Sistema, o escopo do sistema, as definições de termos, as abreviações e acrônimos, ademais da organização do documento.
+
+\subsection{Propósito}
+A Especificação de Requisitos do Sistema expõe as necessidades do robô autônomo móvel simulado que o trabalho propõe, assim como as exigências do ambiente simulado no qual o robô irá atuar. Com isso, será facilitada a implementação do modelo a ser proposto, além de permitir a realização de testes específicos e coerentes ao sistema. 
+
+\subsection{Escopo}
+O sistema AtmosBot inicial modelado é um robô autônomo móvel que atua em um ambiente interno dinâmico desconhecido. O agente deve conseguir realizar a tarefa elementar de um robô de serviço doméstico completamente autônomo, sendo ela: a navegação autônoma. Com isso, o robô simulado modelado deve ser capaz de se locomover pelo ambiente de forma autônoma e sem colidir com possíveis obstáculos.
+
+\subsection{Definições}
+
+RFS - Requisitos Funcionais do Sistema
+
+RNFS - Requisitos Não Funcionais do Sistema
+
+RNFA - Requisitos Não Funcionais do Ambiente
+
+\subsection{Organização}
+Este documento contém a descrição geral do projeto, incluindo a perspectiva do sistema, suas funções e as características do usuário. Ademais, possui os requisitos específicos funcionais e não funcionais subdivididos entre o sistema e o ambiente simulados.
+
+\section{Descrição geral}
+Esta seção descreve os fatores gerais que afetam o sistema e seus requisitos, contendo a perspectiva do sistema, as suas funções e as características do usuário.
+
+\subsection{Perspectiva do sistema}
+O sistema em questão funciona de forma independente para ser um robô autônomo móvel simulado. Entretanto, em um futuro trabalho, ele deve ser inserido como funcionalidade de um sistema maior que é um robô de serviço doméstico. 
+
+Como boa prática, segundo os princípios da arquitetura de subsunção de \citet{brooks85}, cada funcionalidade de um robô de serviço doméstico deve ser independente e apenas realizar comunicações necessárias entre si. Então, o sistema a ser modelado deve funcionar de forma modular do projeto completo.
+
+\subsection{Funções do sistema}
+O dispositivo simulado deve conter duas funções essenciais ao seu funcionamento, sendo elas:
+\begin{enumerate}
+    \item Navegação autônoma pelo ambiente sem colidir com obstáculos;
+    \item Exploração do ambiente.
+\end{enumerate}
+Todas as sub-tarefas fundamentais das funções supracitadas devem ser cumpridas integralmente para o funcionamento correto do sistema.
+
+\subsection{Características do usuário}
+O sistema descrito é autônomo e não necessita da interação ou interferência de usuários humanos. Ele atua unicamente no ambiente inserido conforme as características do mesmo.
+
+\section{Requisitos específicos}
+Esta seção destaca com detalhe todos os requisitos funcionais e não funcionais do robô móvel autônomo simulado e do ambiente que será criado por simulação a fim de testar o sistema proposto. Os requisitos funcionais determinam as ações fundamentais que o sistema e o ambiente devem ter para que o dispositivo a ser modelado consiga aceitar e processar as suas entradas, além de gerar saídas para seus atuadores agirem no meio. 
+
+Os requisitos não funcionais englobam questões de desempenho, segurança, confiabilidade, entre outros aspectos que são características necessárias para um ótimo funcionamento geral, não conceituando ações do sistema.
+
+Todos os requisitos são rotulados pela prioridade e urgência de aplicação, podendo ser definidos como:
+\begin{itemize}
+    \item Essencial: o requisito não pode faltar no sistema ou ambiente;
+    \item Importante: o requisito é necessário para um bom funcionamento, porém não o limita;
+    \item Desejável: o requisito é necessário para um ótimo funcionamento, mas pode ser implementado em uma futura versão sem impactar o desempenho do sistema.
+\end{itemize}
+Além disso, os requisitos são expostos segundo a Tabela \ref{tab:modeloRequisitos}.
+
+\begin{table}[H]
+\centering
+\caption{Modelo dos requisitos}
+\label{tab:modeloRequisitos}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{Identificação do requisito} & \textbf{Título do requisito}                    & \textbf{Prioridade}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Especificação da entrada necessária para a funcionalidade}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{Detalhamento da funcionalidade}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Especificação da saída necessária após a execução da funcionalidade} \\ \hline
+\end{tabular}%
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\subsection{Requisitos Funcionais do Sistema}
+
+\begin{table}[H]
+\centering
+\caption{RFS01}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RFS01} & \textbf{Movimentação do robô}                    & \textbf{Importante}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Direção definida pelo eixo que o robô precisa se locomover.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O robô deve se mover para todas as direções no ambiente.}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Movimentação do instrumento de locomoção (rodas ou pernas) do robô conforme a direção explicitada.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{RFS02}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RFS02} & \textbf{Evitação de obstáculos}                    & \textbf{Essencial}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Dados do ambiente ao redor do robô coletados a partir de sensores em seu corpo.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O robô deve processar os dados dos sensores de modo a saber se há um obstáculo (objeto, pessoa, animal, parede ou móvel) perto o suficiente que ele possa colidir. Com essa informação, caso haja um obstáculo próximo a sua frente, o robô deve se esquivar dele e continuar sua trajetória planejada. Caso não haja obstáculos a sua frente, o robô deve continuar a sua trajetória planejada.}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Comandos para os motores atuarem nas rodas alterando a direção conforme o obstáculo detectado.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{RNFS01}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFS01} & \textbf{Locomoção em diferentes superfícies}                    & \textbf{Importante}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O robô deve ser capaz de se locomover de forma satisfatória, tanto em pisos lisos,  quanto em pisos revestidos (com carpetes ou tapetes).}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{RNFS02}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFS02}& \textbf{Locomoção com segurança aos seres transeuntes}                    & \textbf{Desejável}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{A velocidade de locomoção do robô deve ser moderada, respeitando o ambiente interno e sua dinamicidade, a fim de não prejudicar as pessoas e/ou animais que transitam o espaço em conjunto com o próprio robô. Sendo assim, ela não deve ultrapassar de 0,2 m/s. }                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\subsection{Requisitos Não Funcionais do Ambiente Simulado}
+
+
+\begin{table}[H]
+\centering
+\caption{RNFA01}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFA01} & \textbf{Dinamicidade}                    & \textbf{Essencial}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O ambiente deve conter mudanças frequentes na posição de objetos e móveis.}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{RNFA02}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFA02} & \textbf{Semelhança a domicílios reais}                    & \textbf{Essencial}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O ambiente deve trazer aspectos de um domicílio comum, com móveis, paredes, portas, objetos, tapetes, entre outros itens que o tornam mais verossímil à realidade.}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{RNFA03}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFA03} & \textbf{Tamanho de domicílio padrão}                    & \textbf{Desejável}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O ambiente deve conter, no mínimo, três cômodos internos que se conectam de alguma forma (por portas ou corredores).}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{RNFA04}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|p{15cm}|l}
+\textbf{RNFA04}& \textbf{Minimização de Impedimentos}                    & \textbf{Essencial}                   \\ \hline
+\textbf{Entrada}                    & \multicolumn{2}{p{17cm}}{Não possui.}           \\ \hline
+\textbf{Detalhamento}               & \multicolumn{2}{p{17cm}}{O ambiente não deve conter portas fechadas ou pouco abertas. Além disso o ambiente de acesso do robô não deve conter escadas ou degraus altos (devem conter no máximo 1 centímetro de altura).}                                      \\ \hline
+\textbf{Saída}                      & \multicolumn{2}{p{17cm}}{Não possui.} \\ \hline
+\end{tabular}% 
+}
+\caption*{Fonte: Autora (2023).}
+\end{table}
