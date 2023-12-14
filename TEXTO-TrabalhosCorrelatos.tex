@@ -17,7 +17,7 @@ A base do robô Herbert contém a alimentação de energia própria e um computa
 
 Para o controle lógico do robô através da arquitetura de subsunção, foram utilizadas placas com microprocessadores CMOS de 8 bits  que compartilham entre si apenas energia. Para integrar o reconhecimento lógico de objetos com o scanner, foi combinado com o sensor uma árvore de processadores de visão orientada por linha. 
 
-O robô Herbert conseguiu ter um consumo energético baixo para a sua época por ser estruturado por componentes CMOS, além de ter uma resposta mais rápida aos obstáculos por conta do sensor infravermelho que opera na velocidade da luz e possibilita uma varredura do ambiente em 360 graus. Ademais, sua estrutura foi arranjada de uma maneira que todos seus subsistemas - como as placas de circuitos -  conseguem ser removidas, ajustadas e devolvidas ao corpo do robô com fácil acesso. 
+O robô Herbert conseguiu ter um consumo energético baixo para a sua época por ser estruturado por componentes CMOS, além de ter uma resposta mais rápida aos obstáculos por conta do sensor infravermelho que possibilita uma varredura do ambiente em 360 graus. Ademais, sua estrutura foi arranjada de uma maneira que todos seus subsistemas - como as placas de circuitos -  conseguem ser removidas, ajustadas e devolvidas ao corpo do robô com fácil acesso. 
 
 Por ser um projeto realizado no fim dos anos 80, os equipamentos utilizados e as capacidades do robô são limitantes. Apesar de utilizarem processadores com menor custo energético, o dispositivo consegue transitar e realizar suas tarefas pelo ambiente por apenas uma hora. 
 
@@ -56,7 +56,7 @@ No contexto apenas da navegação autônoma, muitas abordagens podem ser utiliza
     \label{fig:turtlebotSLAM}
 \end{figure}
 
-As informações do ambiente foram capturadas por um sensor LiDaR e utilizadas, em conjunto com a odometria  (informação de deslocamento a partir das revoluções das rodas) do robô, no processo SLAM. A fim de melhorar a experiência com a abordagem SLAM, foi utilizado o algoritmo AMCL (Localização Monte Carlo Adaptativa), sendo uma a versão aprimorada do algoritmo original Localização Monte Carlo. Além disso, o ROS é utilizado como o intermediador entre o sistema, os sensores e o controle lógico (no qual é executado o SLAM adaptado) do Turtlebot3 Burger. 
+As informações do ambiente foram capturadas por um sensor LiDaR e utilizadas, em conjunto com a odometria  (informação de deslocamento a partir das revoluções das rodas) do robô, no processo SLAM. A fim de melhorar a experiência com a abordagem SLAM, foi utilizado o algoritmo AMCL (\textit{Adaptive Monte Carlo Localization}), sendo uma a versão aprimorada do algoritmo original Localização Monte Carlo. Além disso, o ROS é utilizado como o intermediador entre o sistema, os sensores e o controle lógico (no qual é executado o SLAM adaptado) do Turtlebot3 Burger. 
 
 Visando testar facilmente a solução proposta em comparação com o mapeamento e navegação comum, foi usado o simulador Gazebo. Entretanto, os dois métodos foram testados no mundo real também para assegurar resultados condizentes com a realidade. Com esses experimentos foi apontado que o uso do SLAM aperfeiçoado com o algoritmo de Localização Adaptativa de Monte Carlo tornou a navegação mais resiliente e com maior acurácia.
 
@@ -65,7 +65,7 @@ Visando testar facilmente a solução proposta em comparação com o mapeamento 
 
 O desenvolvimento de um robô autônomo móvel, em muitos casos, pode incluir a implementação de recursos que tornam o robô mais custoso, em questão de processamento e preço. Em \citet{dpoom}, seu principal objetivo é diminuir o custo computacional e monetário dos robôs autônomos móveis. Para reduzir o valor da estrutura física do robô, foi utilizada uma câmera RGB-D (capaz de capturar a profundidade dos itens, além da imagem comum colorida) para a percepção do ambiente, ao invés do sensor LiDaR, comumente utilizado e com maior custo. 
 
-Além disso, foi adicionada uma adaptação, menos custosa computacionalmente, do algoritmo clássico de aprendizado por reforço profundo, para evitar obstáculos ao longo da locomoção do seu robô DPoom. Em conjunto, \citet{dpoom} implementou a criação de mapas e posicionamento em tempo real com algoritmo de SLAM integrado a câmera RBG-D. Com isso, foi possível retirar a necessidade da utilização de uma GPU e manter o desempenho ideal em tempo real, usufruindo apenas de uma placa-mãe de baixo custo.
+Além disso, foi adicionada uma adaptação, menos custosa computacionalmente, do algoritmo clássico de aprendizado por reforço profundo, para evitar obstáculos ao longo da locomoção do seu robô DPoom. Em conjunto, \citet{dpoom} implementou a criação de mapas e posicionamento em tempo real com algoritmo de SLAM integrado a câmera RBG-D. Com isso, foi possível retirar a necessidade da utilização de uma GPU (\textit{Graphic Processing Unit}) e manter o desempenho ideal em tempo real, usufruindo apenas de uma placa-mãe de baixo custo.
 
 A fim de validar seu sistema desenvolvido, \citet{dpoom} integrou todas as funcionalidades com ROS e testou, primeiramente, no simulador Gazebo com uma variação de dez ambientes domésticos estáticos e dinâmicos. O  DPoom (Figura~\ref{fig:dpoom}) também foi testado em ambientes internos reais, com humanos se movimentando ao longo do meio, permitindo validar a interação do robô com as pessoas.
 
@@ -77,7 +77,7 @@ A fim de validar seu sistema desenvolvido, \citet{dpoom} integrou todas as funci
     \label{fig:dpoom}
 \end{figure}
 
-Os principais resultados encontrados em \citet{dpoom} são i) o tempo de execução reduzido,  de apenas 18Hz, para o algoritmo de navegação sem colisão com obstáculos; ii) a taxa baixa de 15\% de colisão; iii) a navegação bem sucedida em ambientes lotados.
+Os principais resultados encontrados em \citet{dpoom} são i) a taxa de operação reduzida,  de apenas 18Hz, para o algoritmo de navegação sem colisão com obstáculos; ii) a taxa baixa de 15\% de colisão; iii) a navegação bem sucedida em ambientes lotados.
 
 \section{Robô Autônomo Móvel com LiDaR e RGB-D}
 Em \citet{lidarRGBD},  é proposto um robô autônomo móvel (Figura~\ref{fig:lidarRGBD}) com maior percepção do ambiente, a fim de obter uma navegação mais eficiente ao evitar obstáculos dinâmicos e ser mais seguro a humanos e seus pertences. Para isso, foram implementados, em conjunto, um sensor LiDaR e uma câmera RGB-D para a percepção do ambiente. 
