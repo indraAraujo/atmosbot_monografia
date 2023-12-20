@@ -11,7 +11,7 @@
 % dados corretos, sem prejuízo do texto final.
 %
 
-\documentclass[tcc,baec]{unipampa}
+\documentclass[tcc,baec,oneside]{unipampa}
 
 % Use a opção oneside antes de gerar o texto definitivo. A opção vai gerar um pdf que imprime uma página por folha, com a
 % numeração sempre do lado direito da página, do jeito que a biblioteca da Unipampa exige, mostrando nenhuma preocupação
@@ -56,6 +56,7 @@
 \usepackage{graphicx}           % pacote para importar figuras
 \usepackage{times}              % pacote para usar fonte Adobe Times
 \usepackage{mathptmx}           % pacote usar fonte Adobe Times nas fórmulas
+\usepackage{pdfpages}
 
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
 
@@ -125,7 +126,7 @@
 % instituição do membro da banca
 \inst{UNIPAMPA}				          
 
-\defesa{11}{setembro}{2020}                       % data da defesa - dia, mês e ano
+\defesa{07}{dezembro}{2023}                       % data da defesa - dia, mês e ano
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -165,7 +166,7 @@
 %
 
 \maketitle
-
+\includepdf[pages=-]{Pagina_adicional.pdf}
 %%%%%
 %%%%% Elementos pré-textuais: só insira na versão final do trabalho (TCC, monografia, dissertação ou tese)
 %%%%%
@@ -203,6 +204,7 @@
 % \newcommand{\MT}{Máquina de Turing} e use \MT sempre que quiser que o termo apareça completo.
 % Isso torna a leitura do texto mais fluente.
 \begin{listofabbrv}{UNIPAMPA}
+        \item[ACM] Association for Computing Machinery
        \item[AMCL]  Adaptive Monte Carlo Localization
         \item[AVC]     Acidente Vascular Cerebral
         \item[CMOS]    Complementary Metal-Oxide Semiconductor
@@ -210,9 +212,11 @@
         \item[FPGA]    Field Programmable Gate Array
         \item[GPU]     Graphic Processing Unit
         \item[IA]      Inteligência Artificial
+        \item[IEEE] Institute of Electrical and Electronics Engineers 
         \item[LiDaR]   Light Detection and Range
         \item[ODE]     Open Dynamics Engine
         \item[RAM]      Random Access Memory
+        \item[RGB]   Red, Green and Blue
         \item[RGB-D]   Red, Green and Blue - Depth
         \item[ROS]     Robot Operating System
         \item[SDF]      Standard Description Format
