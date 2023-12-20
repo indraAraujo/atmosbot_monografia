@@ -99,7 +99,7 @@ Para analisar o comportamento do robô desenvolvido, \citet{lidarRGBD} testou as
 A análise acima de alguns projetos correlatos ao presente trabalho proporcionou um conhecimento mais amplo sobre as possibilidades de implementação de soluções no contexto de robôs de serviço doméstico e navegação autônoma. Com isso, foi possível levantar uma tabela (Tabela~\ref{tab:trabalhosCorrelatos}) com as principais diferenças entre esses projetos conforme as tecnologias implementadas, estrutura física utilizada e considerações finais relevantes ao trabalho em questão. 
 
 \begin{table}[H]
-\caption{Principais características dos trabalhos correlatos}
+\caption{Principais características dos trabalhos correlatos comparados com AtmosBot}
 \label{tab:trabalhosCorrelatos}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{p{5cm}|p{5cm}|p{5cm}|p{5cm}}
@@ -125,7 +125,11 @@ Robô DPoom de \citet{dpoom} &
 Robô com LiDaR e RGB-D de \citet{lidarRGBD} &
   SLAM e algoritmo AMCL, integrados com ROS. &
   Sensor LiDaR, câmera RGB-D. & 
-  Mais obstáculos capturados, mas maior custo de processamento.
+  Mais obstáculos capturados, mas maior custo de processamento. \\ \hline
+  AtmosBot &
+  SLAM com mapeamento simultâneo a exploração e biblioteca de navegação, integrado com ROS e arquitetura de subsunção. &
+  Sensor LiDaR e 4 rodas padrão. & 
+  Menor custo de processamento e mapeamento menos divergente.
 \end{tabular}
 %
 }
