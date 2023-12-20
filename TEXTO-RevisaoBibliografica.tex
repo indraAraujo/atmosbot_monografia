@@ -21,7 +21,7 @@ Sendo assim, um dos maiores desafios encontrados na área é o tratamento e toma
 Dito isso, esta seção apresenta os conceitos básicos de navegação, da estrutura física de um robô móvel autônomo e a discussão sobre as abordagens de arquiteturas mais relevantes para o seu controle lógico.
 
 
-\subsection{Navegação Autônoma do Robô } %%INCREMENTAR
+\subsection{Navegação Autônoma do Robô }
 
 A navegação de um robô de forma independente não constitui apenas do dispositivo vagar pelo local aonde se encontra. Em primeiro lugar, é necessário que ele entenda onde está e com isso possa identificar o seu ponto geográfico no espaço em que atua. Em conjunto com a tarefa que deseja executar e as informações do ambiente, o robô inicia o processo de planejamento da trajetória que precisa percorrer até o seu destino. Por fim, a partir das decisões tomadas para seguir uma rota, ele se moverá inteligentemente até o destino, evitando os obstáculos e lidando com possíveis mudanças no meio. Assim, podemos afirmar que a navegação autônoma do robô é composta por quatro tarefas primordiais: i) percepção do ambiente, ii) localização, iii) planejamento, iv) locomoção \cite{mobileRobotsSiegwart:2011}. 
 
@@ -57,34 +57,42 @@ O uso de rodas é comumente optado para robôs que atuam em terrenos mais regula
     \label{fig:rodas}
 \end{figure}
 
-\subsection{Abordagens de Arquitetura de Controle} %%ATUALIZADO
+\subsection{Abordagens de Arquitetura de Controle} 
 
-A navegação consegue ser bem sucedida apenas quando os seus quatro aspectos fundamentais (percepção, localização, planejamento e locomoção) são controlados corretamente de forma uníssona por uma arquitetura inteligente \cite{mobileRobotsSiegwart:2011}. Para isso, existem duas abordagens principais que possam ser utilizadas: a inteligência artificial (IA) clássica e a arquitetura de subsunção.
+A navegação consegue ser bem sucedida apenas quando os seus quatro aspectos fundamentais (percepção, localização, planejamento e locomoção) são controlados corretamente de forma uníssona por uma arquitetura inteligente \cite{mobileRobotsSiegwart:2011}. Para isso, existem duas abordagens principais que possam ser utilizadas: hierarquica e comportamental. A principal diferença encontrada nessas abordagens é a sua organização interna para atingir o objetivo necessário.
 
-Conforme explicado em \citet{practicalIndroductionNehmzow:2012}, a IA clássica se constitui em um ciclo repetitivo de coletar informações do ambiente por sensores, as quais alimentam uma sequência de módulos dependentes que realizam o seu processamento e geram uma ação para os atuadores do robô. Os dados coletados do espaço onde o sistema está inserido é transmitido diretamente para o primeiro módulo de processamento e os próximos módulos utilizam as informações dos seus anteriores para criar e atualizar ou comparar com um modelo do mundo real. 
-
-Para \citet{practicalIndroductionNehmzow:2012}, entre as principais desvantagens da abordagem clássica  se tem o uso único do modelo do mundo, pelos módulos de processamento, ao invés das informações em tempo-real coletadas pelos sensores. Outra questão crítica é a dependência alta entre cada módulo, permitindo a falha do sistema completo caso algum módulo encontre um erro. Por fim, também existe a preocupação que esta abordagem não se adeque à necessidade do robô de ter reações rápidas.
-
-Perante projetos com a necessidade de utilizar uma abordagem que não dependesse de representações simbólicas, com menor custo computacional e com maior conexão entre as informações reais do ambiente e as decisões tomadas, é eficiente aplicar um conceito alternativo ao de IA clássica, como a  arquitetura de subsunção de Rodney Brooks.
-
-A arquitetura de subsunção proposta em \citet{brooks85} constitui camadas que representam atividades comportamentais independentes. Sua principal diferença em relação à abordagem clássica é a estrutura paralela da arquitetura. Esse paralelismo é dado através dos módulos (processadores) que recebem dados dos sensores, comunicam entre si assincronamente e executam ações nos atuadores em conjunto, podendo ser visualizados como camadas na horizontal em detrimento de uma execução mais vertical como na IA clássica (Figura~\ref{fig:abordagens}). 
+As abordagens hierarquicas, como a inteligência artificial (IA) clássica, controlam o robô de forma sequencial. A estrutura dessa abordagem é constituída pelo processamento das informações do ambiente sequencialmente conforme o modelo do mundo real utilizado em cada camada da estrutura \cite{practicalIndroductionNehmzow:2012,toroco:2022}. Como pode ser visto na Figura~\ref{fig:iaclassica}, os dados captados pelos sensores alimentam a primeira funcionalidade da estrutura. Com isso, essa camada inicial executa seu próprio processamento e repassa os seus resultados para a próxima funcionalidade. Por fim, o resultado da última camada é inferida nos atuadores do robô para que este complete a sua atuação desejada.
 
 \begin{figure}[h]
     \centering
-    \caption{Diferença entre a arquitetura de subsunção e IA clássica}
-    \includegraphics[scale=0.2]{abordagens.png}
+    \caption{IA clássica}
+    \includegraphics[scale=0.3]{iaclassica.png}
     \caption*{Fonte: Adaptação de \citet{brooks85} pela autora.}
-    \label{fig:abordagens}
+    \label{fig:iaclassica}
 \end{figure}
 
-As camadas da arquitetura de subsunção foram projetadas por \citet{brooks85} como níveis de competência que especificam, informalmente, uma classe de comportamentos desejáveis. Neste trabalho, Brooks utilizou cinco níveis que contemplam navegação, com e sem rumo, evitando colisões, exploração e mapeamento do ambiente,  planejamento de rotas e tratamento de mudanças no espaço. 
+Como visto, a abordagem hierarquica cria uma dependência entre suas funcionalidades. Essa característica permite a diminuição da robustez do sistema, já que o erro em uma das suas funcionalidades resulta em uma falha generalizada \cite{practicalIndroductionNehmzow:2012}. Além disso, as camadas mais centrais se baseiam unicamente em modelos do mundo real e dos resultados de processamento antecessores, causando uma menor confiabilidade no sistema e reflexos mais lentos à dinamicidade do ambiente \cite{practicalIndroductionNehmzow:2012}.
+
+As abordagens comportamentais, introduzidas pela arquitetura de subsunção, têm o intuito de controlar o robô por comportamentos independentes e assíncronos, ativados conforme os acontecimentos do ambiente, sendo sistemas reativos \cite{seqlam:2020, toroco:2022}. Como exposto na Figura~\ref{fig:subsuncao}, o controle lógico do robô é dividido em funcionalidades que representam comportamentos distintos e são executadas paralelamente. Todas as funcionalidades são alimentadas com os dados captados dos sensores e inferem comandos nos atuadores \cite{seqlam:2020,brooks85}. Logo, o conjunto da execução de todas as funcionalidades resulta na atuação do objetivo final do robô.
+
+\begin{figure}[h]
+    \centering
+    \caption{Arquitetura de subsunção}
+    \includegraphics[scale=0.4]{subsuncao.png}
+    \caption*{Fonte: Adaptação de \citet{brooks85} pela autora.}
+    \label{fig:subsuncao}
+\end{figure}
+
+As características das abordagens comportamentais permitem algumas vantagens em comparação com as abordagens hierarquicas. Entre essas vantagens, se destacam i) a redução do custo computacional; ii) a maior confiabilidade por conta do acesso direto às informações do ambiente por cada camada; iii) a maior robustez causada pela independência das camadas \cite{seqlam:2020,brooks85, toroco:2022}. 
+
+As camadas da arquitetura de subsunção foram projetadas por \citet{brooks85} como níveis de competência que especificam, informalmente, uma classe de comportamentos desejáveis. Neste trabalho, Brooks utilizou cinco níveis que contemplam navegação, com e sem rumo, evitando colisões, exploração e mapeamento do ambiente, planejamento de rotas e tratamento de mudanças no espaço. Entretanto, a independência entre cada camada da arquitetura permite o incremento, ou remoção, de funcionalidades conforme o cenário de atuação do robô. 
 
 \citet{brooks85} expõe nove paradigmas para os sistemas baseados na arquitetura proposta. Entre eles, salienta-se a importância da simplicidade em diversos aspectos, como o próprio sistema de controle a ser implementado e a comunicação entre as camadas. 
 
 Outra questão levantada na arquitetura de subsunção é o uso de modelos do mundo (tais quais não são usados unicamente durante o processamento, pois todos os módulos têm acesso às informações coletadas pelos sensores). Eles visam uma melhor verossimilidade a realidade a partir do uso de mapas não relacionais de três dimensões e não artificiais. Por fim, também é ressaltado a necessidade da durabilidade e robustez do sistema sem a interferência de humanos.
 
 
-\subsection{Estrutura Física do Robô} %%ATUALIZADO
+\subsection{Estrutura Física do Robô} 
 
 A estrutura física do robô precisa refletir e acomodar o ambiente em que atua para as suas tarefas serem executadas correta e eficientemente. O corpo, que engloba o sistema implementado, pode consistir em sensores que irão coletar dados do ambiente e da condição do próprio dispositivo, atuadores para terem ações sobre o meio, partes mecânicas como braços robóticos para manipulações e elementos para o processamento geral e individual dos outros componentes.
 
