@@ -184,3 +184,35 @@ O teste mal-sucedido para o segundo caso de teste (CT02), teve esse resultado de
 \end{figure}
 
 Por fim, a simulação no programa Gazebo proporcionou a verificação da implementação das funcionalidades. Com isso, ao longo do desenvolvimento, foi possível analisar as integrações e realizar as mudanças necessárias para a melhoria dos componentes. Tal facilidade na validação do comportamento do robô pela simulação também é aproveitada por \citet{navegacaoSlam:2022, dpoom, lidarRGBD}. 
+
+\section{Destaques do AtmosBot}
+A implementação completa do modelo proposto permite uma comparação dos seus resultados obtidos e dos trabalhos correlatos. Na Tabela~\ref{tab:comparacaoResultados} estão expostos os resultados obtidos na navegação autônoma do AtmosBot e os trabalhos correlatos explicados no \chapterautorefname~\ref{cap-trabalhos-relacionados}. A tabela separa a navegação nas suas principais atividades, enfatizando as tecnologias implementadas e suas consequências.
+
+\begin{table}[h]
+    \centering
+    \caption{Comparação dos resultados do AtmosBot com trabalhos correlatos}
+    \label{tab:comparacaoResultados}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}}
+        & \multicolumn{1}{p{3cm}|}{\textbf{Percepção}} & \multicolumn{1}{p{3cm}|}{\textbf{Localização}}                    & \multicolumn{1}{p{3cm}}{\textbf{Mapeamento}}   \\ \hline 
+\textbf{AtmosBot} &
+Sensor LiDaR: menor custo de processamento e tecnologia mais relevante &
+Biblioteca Nav2 + Slam Toolbox: implementação em mais alto nível &
+Slam + navegação: abordagem mais relevante e menor divergência no mapeamento \\ \hline
+\textbf{Robô TurtleBot3 Burger de \citet{turtleBot3Burger:2021}} &
+sensor LiDaR: integração mais relevante com SLAM e ROS &
+AMCL: implementação com pacotes do ROS e menos colisões &
+Slam com mapa criado antes da navegação: robô controlado remotamente e divergência com mundo real \\ \hline
+\textbf{Robô DPoom de \citet{dpoom}} & câmera RGB-D: menor custo financeiro    & Mapas 3D + câmera RGB-D: sem implementação de outros pacotes & Slam 3D: criação de mapas mais detalhados \\ \hline
+\textbf{Robô com LiDaR e RGB-D \citet{lidarRGBD}} &
+sensor LiDaR e câmera RGB-D: percepção 3D do ambiente &
+AMCL: implementação extra com pacotes do ROS &
+Slam 2D e mapa estático: robô controlado remotamente
+\end{tabular}%
+    }
+    \caption*{Fonte: Autora (2023).}
+\end{table}
+
+\newpage
+
+Como pode ser observado na Tabela~\ref{tab:comparacaoResultados}, um dos principais destaques do AtmosBot é a implementação de tecnologias relevantes para a percepção e mapeamento do ambiente, obtendo um menor custo de processamento e divergência do mundo real. Além disso, foi possível obter a localização do robô com bibliotecas integradas ao ROS, sem a necessidade de implementar um algoritmo específico em baixo nível.
