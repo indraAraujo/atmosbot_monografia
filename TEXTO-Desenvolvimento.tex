@@ -107,7 +107,7 @@ Em paralelo com a execução de outras possíveis funcionalidades que poderão s
 A implementação da proposta pode ser separada em três elementos: i) a simulação; ii) o controle do robô; iii) integração de todos os componentes. O desenvolvimento de cada elemento é explicado detalhadamente a seguir.
 
 \subsection{Simulação}
-A simulação é responsável por permitir a recriação da realidade de forma mais verossímil possível. Para isso, cada aspecto dos elementos reais deve ser descrito com alta riqueza de detalhes, para serem representados na simulação com maior semelhança. Para o simulador Gazebo, essa descrição é realizada mediante arquivos SDF (do inglês Formato de Descrição de Simulação) que compõe todas as características necessárias para a definição de elementos do ambiente e do robô. Entre essas características, são descritas o comportamento dos componentes perante as leis da física, além de tamanho, cor, articulações e movimento.
+A simulação é responsável por permitir a recriação da realidade de forma mais verossímil possível. Para isso, cada aspecto dos elementos reais deve ser descrito com alta riqueza de detalhes, para serem representados na simulação com maior semelhança. Para o simulador Gazebo, essa descrição é realizada mediante arquivos SDF que compõe todas as características necessárias para a definição de elementos do ambiente e do robô. Entre essas características, são descritas o comportamento dos componentes perante as leis da física, além de tamanho, cor, articulações e movimento.
 
 Visto que uma das maiores vantagens do simulador Gazebo é a sua comunidade ativa de desenvolvedores usários que continuamente disponibiliza novos modelos de robôs e ambientes, foi possível criar o robô AtmosBot baseado no modelo disponibilizado por \citet{modeloRobo}. A fim de obter uma melhor resolução na simulação, em conjunto com os arquivos SDF, cada parte do robô (rodas, base e estrutura vertical) foi renderizada por dados de malha tridimensional (MESH) elaborados e modificados no programa de design 3D Blender.
 
@@ -147,7 +147,7 @@ O mapa disponibilizado pela execução biblioteca Slam Tollbox é acessado pela 
 
 \subsection{Sistema Operacional de Robô}
 
-Visto a quantidade de singularidades, foi utilizado o ROS para integrar todos os componentes e conectá-los entre o robô e a simulação. Para isso, foram definidas as características do robô em termos que o ROS reconheça, por URDFs (formato de descrição de robô universal) traduzidos dos SDFs para a simulação. Essas descrições foram integradas com informações específicas dos sensores e odometria do robô, para serem acessadas pelas demais bibliotecas e o algoritmo de vagar.
+Visto a quantidade de singularidades, foi utilizado o ROS para integrar todos os componentes e conectá-los entre o robô e a simulação. Para isso, foram definidas as características do robô em termos que o ROS reconheça, por URDFs traduzidos dos SDFs para a simulação. Essas descrições foram integradas com informações específicas dos sensores e odometria do robô, para serem acessadas pelas demais bibliotecas e o algoritmo de vagar.
 
 O ROS é constituído por componentes (nomeados como nós) que se comunicam entre si por linhas de comunicação (tópicos) que podem ser acessadas para enviar novas informações (publicar) ou captar informações publicadas (inscrever) por outros nós. Para que essas comunicações entre os nós se tornem mais confiáveis e robustas, foram utilizadas as configurações de qualidade de serviço  a partir do \textit{middleware} Cyclone \cite{qos, cyclone}.
 
