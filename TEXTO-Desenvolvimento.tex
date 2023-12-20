@@ -12,7 +12,7 @@ A simulação do modelo proposto foi realizada a partir da plataforma Gazebo. De
 %%NAVEGAÇÃO------- 
 No âmbito da navegação autônoma, diferentes abordagens podem ser utilizadas em conjunto para implementar cada sub-tarefa que constitui a navegação de um robô autônomo móvel. Ao todo, foram necessárias lógicas que possibilitem que o robô vague, explore e se localize pelo ambiente de forma inteligente, com menor quantidade de colisões e sem a interferência de humanos.
 
-A pesquisa bibliográfica para identificar as abordagens mais relevantes para a localização do robô resultou em 4116 publicações totais do tema, obtendo  42 artigos finais coerentes com os critérios de inclusão. Os resultados intermediários, conforme os momentos pré-estabelecidos, podem ser encontrado na Figura~\ref{fig:diagramaResultadosLocalizacao}. 
+A pesquisa bibliográfica para identificar as abordagens mais relevantes para a localização do robô resultou em 4116 publicações totais do tema, obtendo  42 artigos finais coerentes com os critérios de inclusão. A quantidade de publicações encontradas nos repositórios e de materiais descartados em cada momento pré-estabelecido, pode ser encontrada na Figura~\ref{fig:diagramaResultadosLocalizacao}. 
 
 \begin{figure}[h]
     \centering
@@ -33,7 +33,7 @@ Dentre as abordagens encontradas para localização de robôs autônomos móveis
 \end{figure}
 
 %%PERCEPÇÃO-----
-De forma similar, a pesquisa bibliográfica que visava responder qual o instrumento mais utilizado para a percepção do ambiente pelo robô autônomo móvel, resultou em 1501 publicações totais, obtendo 33 artigos finais coerentes com os critérios de inclusão e exclusão definidos. Os resultados intermediários, conforme os momentos pré-estabelecidos, podem ser encontrado na Figura~\ref{fig:diagramaResultadosPercepcao}. 
+De forma similar, a pesquisa bibliográfica que visava responder qual o instrumento mais utilizado para a percepção do ambiente pelo robô autônomo móvel, resultou em 1501 publicações totais, obtendo 33 artigos finais coerentes com os critérios de inclusão e exclusão definidos. A quantidade de publicações encontradas nos repositórios e de materiais descartados em cada momento pré-estabelecido, podem ser encontrado na Figura~\ref{fig:diagramaResultadosPercepcao}. 
 
 \begin{figure}[h]
     \centering
@@ -86,12 +86,13 @@ A exploração do ambiente pode ser subdividida em quatro tarefas importantes ex
     \label{fig:estados}
 \end{figure}
 
+\newpage
+
+Na Figura~\ref{fig:estados} é apresentada uma máquina de estados com dois principais estados sequenciais, em um laço fechado, sendo eles: esperando e explorando ambiente. O segundo estado é subdividido em quatro estados executados em paralelo, incluindo os sub-estados: vagando, se localizando, mapeando e desviando de obstáculos.
 
 Inicialmente, o sistema deve estar em modo de espera para começar sua tarefa. Passado o tempo padrão de espera para que todos os seus processamentos estejam preparados, o robô inicia sua tarefa de explorar o ambiente, vagando pelo meio sem colidir com os obstáculos e coletando informações sobre a sua posição. 
 
 Este modelo permite a adição de outras funcionalidades em paralelo com o módulo de navegação, conforme a aplicação da abordagem de subsunção, que torna as unidades independentes. Apesar de serem unidades independentes, o módulo de navegação autônoma e outros possíveis módulos devem ser interligados com transmissão de informações cruciais entre si, além de se comunicarem com o próprio ambiente onde o robô se encontra. Essa interação entre os subsistemas, o sistema geral e o ambiente, pode ser analisada visualmente através da Figura~\ref{fig:blocos}.  
-
-Em paralelo com a execução de outras possíveis funcionalidades que poderão ser incrementadas, o módulo de navegação recebe as informações que os instrumentos de percepção coletam do ambiente e as suas sub-camadas utilizam esse conhecimento para definir a atividade dos atuadores (os motores e consequentemente as rodas). Uma vez que o robô atua no ambiente, as informações dele mudam, pois o robô se encontra em outra posição, tornando um ciclo fechado entre atuação e percepção do meio.
 
 \begin{figure}[h]
     \centering
@@ -102,6 +103,11 @@ Em paralelo com a execução de outras possíveis funcionalidades que poderão s
     \label{fig:blocos}
 \end{figure}
 
+\newpage
+
+O diagrama de blocos apresentado na Figura~\ref{fig:blocos} é constituído por quatro principais blocos: i) o ambiente que o robô atua, englobando os blocos restantes; ii) os instrumentos de pecepção do robô; iii) o sistema lógico do robô; iv) as rodas do robô. Além disso, o fluxo das informações entre os blocos é representado pelas flechas. A conexão entre o bloco dos instrumentos de percepção e das rodas representa uma atualização constante das informações captadas pelos instrumentos conforme a atuação do robô no ambiente. Ademais, o bloco do sistema lógico do robô é constituído por blocos menores que se comunicam moderadamente, a fim de implementar independentemente a navegação autônoma do robô. 
+
+Em paralelo com a execução de outras possíveis funcionalidades que poderão ser incrementadas, o módulo de navegação recebe as informações que os instrumentos de percepção coletam do ambiente e as suas sub-camadas utilizam esse conhecimento para definir a atividade dos atuadores (os motores e consequentemente as rodas). Uma vez que o robô atua no ambiente, as informações dele mudam, pois o robô se encontra em outra posição, tornando um ciclo fechado entre atuação e percepção do meio.
 
 \section{Implementação da Proposta}
 A implementação da proposta pode ser separada em três elementos: i) a simulação; ii) o controle do robô; iii) integração de todos os componentes. O desenvolvimento de cada elemento é explicado detalhadamente a seguir.
@@ -113,7 +119,7 @@ Visto que uma das maiores vantagens do simulador Gazebo é a sua comunidade ativ
 
 Assim como o uso de um modelo de robô disponibilizado pela comunidade do Gazebo, foi possível montar o domicílio simulado com modelos publicados pela plataforma "AWS Robot Maker" da Amazon, destinada a executar e automatizar simulações sem necessitar lidar com a infraestrutura \cite{aws, modeloAmbiente}.
 
-A simulação se torna completa ao combinar o ambiente montado com o robô elaborado. Para compreender a visão do robô ao longo da simulação, foi utilizado o programa RVIZ que permite visualizar os processos ocorrendo com o robô, como a sua odometria, velocidade e capturas de sensores.
+A simulação se torna completa ao combinar o ambiente montado com o robô elaborado. Para compreender a visão do robô ao longo da simulação, foi utilizado o programa RVIZ (\textit{ROS Vizualisation}) que permite visualizar os processos ocorrendo com o robô, como a sua odometria, velocidade e capturas de sensores.
 
 \subsection{Navegação Autônoma}
 
@@ -124,11 +130,15 @@ A fim de fazer o robô se locomover pelo ambiente simulado de forma livre sem co
 \begin{figure}[h]
     \centering
     \caption{Fluxograma do algoritmo de vagar sem colidir}
-    \includegraphics[scale=0.5]{fluxogramaEvitarObstaculos.png}
+    \includegraphics[scale=0.45]{fluxogramaEvitarObstaculos.png}
     
     \caption*{Fonte: Autora (2023).}
     \label{fig:fluxogramaEvitarObstaculos}
 \end{figure}
+
+\newpage
+
+O fluxograma apresentado na Figura~\ref{fig:fluxogramaEvitarObstaculos} expõe a sequência de funcionamento do algoritmo para evitar obstáculos. Ao iniciar a sua execução, as informações captadas pelo LiDaR são utilizadas para identificar a medida, em metros, até um possível obstáculo logo a frente do sensor (ângulo 0) e em um raio de 90 graus para cada extremidade do instrumento. Assim, é possível descobrir o obstáculos mais próximo do robô, identificando o valor mínimo das capturas pelos feixes de luz do centro (ângulo  1 grau para a diretia e ângulo 359 graus, também enumerado como -1 grau, para a esquerda) até cada extremidade de alcance do sensor (ângulo 90 graus para a direita e ângulo 270, também enumerado como -90 graus, para a esquerda).
 
 Para o mapeamento do ambiente e a localização do robô, foi possível usufruir de uma das maiores vantagens do Sistema Operacional de Robô (ROS): as variadas bibliotecas disponíveis que executam diversas funcionalidades. As bibliotecas utilizadas para realizar o comportamento compatível com a abordagem SLAM, foram a  Slam Toolbox  e Nav2 \cite{nav2, slamtoolbox}.
 
@@ -145,6 +155,8 @@ O mapa disponibilizado pela execução biblioteca Slam Tollbox é acessado pela 
     \label{fig:fluxogramaComando}
 \end{figure}
 
+\newpage
+
 \subsection{Sistema Operacional de Robô}
 
 Visto a quantidade de singularidades, foi utilizado o ROS para integrar todos os componentes e conectá-los entre o robô e a simulação. Para isso, foram definidas as características do robô em termos que o ROS reconheça, por URDFs traduzidos dos SDFs para a simulação. Essas descrições foram integradas com informações específicas dos sensores e odometria do robô, para serem acessadas pelas demais bibliotecas e o algoritmo de vagar.
@@ -155,11 +167,12 @@ Por fim, a estrutura do modelo proposto é composta pelo robô e o ambiente conf
 
 Na Figura~\ref{fig:diagramaBlocosDetalhado}, é encontrada a integração entre todos os componentes supracitados. Em azul, estão as leituras realizadas pelo sensor LiDaR para percepção do ambiente e identificação de obstáculos. Também é representada a odometria, em rosa, coletada pelas informações das rodas. Ambos dados são utilizados pela biblioteca Slam Toolbox e o algoritmo de vagar sem colisões, pelo intermédio do ROS. Assim como, em verde, a velocidade nas rodas é inferida através da definição de seu valor pelo algoritmo de vagar sem colisão ou pela biblioteca Nav2.
 
-\begin{figure}[h]
+\begin{sidewaysfigure}
     \centering
     \caption{Diagrama da integração dos componentes do AtmosBot}
-    \includegraphics[scale=0.6]{diagramaBlocosDetalhado.png}
-    
+    \includegraphics[width=\textheight,height=\textwidth,keepaspectratio]{diagramaBlocosDetalhado.png}
     \caption*{Fonte: Autora (2023).}
     \label{fig:diagramaBlocosDetalhado}
-\end{figure}
+\end{sidewaysfigure}
+
+\newpage

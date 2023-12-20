@@ -15,7 +15,7 @@ O projeto \citet{herbert:1988}  expõe um robô completamente autônomo utilizad
 
 A base do robô Herbert contém a alimentação de energia própria e um computador servo para realizar o mecanismo de direção, o qual atua em um único motor e três rodas. A parte superior do robô é composta por um braço robótico leve e com grau de liberdade suficiente para pegar e soltar objetos no nível do chão e de uma mesa. Essa parte também contém um sensor infravermelho para o robô conseguir se esquivar de obstáculos próximos, fixos ou em movimento, e um sensor scanner de alcance a laser para reconhecimento de objetos. 
 
-Para o controle lógico do robô através da arquitetura de subsunção, foram utilizadas placas com microprocessadores CMOS de 8 bits  que compartilham entre si apenas energia. Para integrar o reconhecimento lógico de objetos com o scanner, foi combinado com o sensor uma árvore de processadores de visão orientada por linha. 
+Para o controle lógico do robô através da arquitetura de subsunção, foram utilizadas placas com microprocessadores CMOS (\textit{Complementary Metal-Oxide Semiconductor}) de 8 bits  que compartilham entre si apenas energia. Para integrar o reconhecimento lógico de objetos com o scanner, foi combinado com o sensor uma árvore de processadores de visão orientada por linha. 
 
 O robô Herbert conseguiu ter um consumo energético baixo para a sua época por ser estruturado por componentes CMOS, além de ter uma resposta mais rápida aos obstáculos por conta do sensor infravermelho que possibilita uma varredura do ambiente em 360 graus. Ademais, sua estrutura foi arranjada de uma maneira que todos seus subsistemas - como as placas de circuitos -  conseguem ser removidas, ajustadas e devolvidas ao corpo do robô com fácil acesso. 
 
@@ -38,7 +38,7 @@ O robô Justina (Figura~\ref{fig:justina}) compõe em sua estrutura física uma 
     \label{fig:justina}
 \end{figure}
 
-Além da câmera RGB-D do Kinect, são utilizados uma segunda câmera RGB, um laser e quatro microfones para perceber o ambiente onde o robô está inserido. Além disso, como retorno para os seres humanos, foram instaladas caixas de som que emitem uma voz sintetizada informando dados da tarefa em execução. Por fim, para realizar o processamento de imagem obtida a partir das câmeras, foi utilizado um sistema embarcado da NVidia.
+Além da câmera RGB-D (\textit{Red, Green and Blue - Depth}) do Kinect, são utilizados uma segunda câmera RGB (\textit{Red, Green and Blue}) , um laser e quatro microfones para perceber o ambiente onde o robô está inserido. Além disso, como retorno para os seres humanos, foram instaladas caixas de som que emitem uma voz sintetizada informando dados da tarefa em execução. Por fim, para realizar o processamento de imagem obtida a partir das câmeras, foi utilizado um sistema embarcado da NVidia.
 
 
 O robô da equipe Pumas baseia-se na arquitetura VIRBOT, própria para robôs de serviço domésticos, implementada mediante um conjunto de módulos independentes que executam tarefas próprias e se comunicam entre si. Essa comunicação entre os componentes é realizada pelo sistema operacional de robô (ROS). 
